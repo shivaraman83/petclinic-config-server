@@ -1,10 +1,22 @@
+Resource1 :
+  name : MvnBuildConfigServerDockerImage
+  imageName : docker.artifactory-unified.soleng-us.jfrog.team/configserverdockerimage
+Resource2 :
+  name : BuildMavenConfigServer_ProduceDockerImage_BuildInfo
+  imageName : docker.artifactory-unified.soleng-us.jfrog.team/configserverdockerimage
+Resource3 :
+  name : PetClinicGitRepo
+  gitProvider : Github_SolEng
+  path: jfrog/SolEngDemo
+  branch : pet-clinic-project
+
 Artifactory: ArtifactoryUnified
 Pipelines:
   name: BuildMavenConfigServer_ProduceDockerImage
 GitRepo:
-  name: PetClinicProjectGitRepo
+  name: PetClinicGitRepo
   path: Samples/pet-clinic-project/spring-petclinic-microservices/spring-petclinic-config-server
-  provider: PetClinicProjectGitRepo
+  provider: PetClinicGitRepo
 Step1 :
   name: mvn_bld_config_server
 Step2 :
@@ -15,12 +27,7 @@ Step2 :
 Step3 :
   name: push_config_server_docker_image
   outputResourceName : BuildMavenConfigServer_ProduceDockerImage_BuildInfo
-Resource1 :
-  name : MvnBuildConfigServerDockerImage
-  imageName : docker.artifactory-unified.soleng-us.jfrog.team/configserverdockerimage
-Resource2 :
-  name : BuildMavenConfigServer_ProduceDockerImage_BuildInfo
-  imageName : docker.artifactory-unified.soleng-us.jfrog.team/configserverdockerimage
+
 
 
 
