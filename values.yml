@@ -1,6 +1,6 @@
 Artifactory: ArtifactoryUnified
 Pipelines:
-  name: pet_clinic_config_server
+  name: pet_clinic_config
 GitRepo:
   name: PetClinicProjectGitRepo
   path: Samples/pet-clinic-project/spring-petclinic-microservices/spring-petclinic-config-server
@@ -9,3 +9,9 @@ Step1 :
   name: bld_config_server
 Step2 :
   name: bld_config_server_docker_image
+  dockerFileLocation: Samples/pet-clinic-project/spring-petclinic-microservices/spring-petclinic-config-server
+  dockerImageName: docker.artifactory-unified.soleng-us.jfrog.team/pet_clinic_config_server_docker_image
+  outputResourceName: ConfigServerDockerImage
+Step3 :
+  name: push_config_server_docker_image
+  outputResourceName : ConfigServerBuildInfo
