@@ -16,11 +16,11 @@ Step3 :
   name: push_config_server_docker_image
   outputResourceName : BuildMavenConfigServer_ProduceDockerImage_BuildInfo
 Resource1 :
-  - name : MvnBuildConfigServerDockerImage
-    imageName : docker.artifactory-unified.soleng-us.jfrog.team/configserverdockerimage
+  name : MvnBuildConfigServerDockerImage
+  imageName : docker.artifactory-unified.soleng-us.jfrog.team/configserverdockerimage
 Resource2 :
-  - name : BuildMavenConfigServer_ProduceDockerImage_BuildInfo
-    imageName : docker.artifactory-unified.soleng-us.jfrog.team/configserverdockerimage
+  name : BuildMavenConfigServer_ProduceDockerImage_BuildInfo
+  imageName : docker.artifactory-unified.soleng-us.jfrog.team/configserverdockerimage
 
 
 
