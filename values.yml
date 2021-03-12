@@ -1,17 +1,26 @@
 Artifactory: ArtifactoryUnified
 Pipelines:
-  name: pet_clinic_config
+  name: BuildMavenConfigServer_ProduceDockerImage
 GitRepo:
   name: PetClinicProjectGitRepo
   path: Samples/pet-clinic-project/spring-petclinic-microservices/spring-petclinic-config-server
   provider: PetClinicProjectGitRepo
 Step1 :
-  name: bld_config_server
+  name: mvn_bld_config_server
 Step2 :
-  name: bld_config_server_docker_image
+  name: convert_mvnbuild_dockerimage
   dockerFileLocation: Samples/pet-clinic-project/spring-petclinic-microservices/spring-petclinic-config-server
-  dockerImageName: docker.artifactory-unified.soleng-us.jfrog.team/pet_clinic_config_server_docker_image
-  outputResourceName: ConfigServerDockerImage
+  dockerImageName: docker.artifactory-unified.soleng-us.jfrog.team/configserverdockerimage
+  outputResourceName: MvnBuildConfigServerDockerImage
 Step3 :
   name: push_config_server_docker_image
-  outputResourceName : ConfigServerBuildInfo
+  outputResourceName : BuildMavenConfigServer_ProduceDockerImage_BuildInfo
+Resource1 :
+  - name : MvnBuildConfigServerDockerImage
+    imageName : docker.artifactory-unified.soleng-us.jfrog.team/configserverdockerimage
+Resource2 :
+  - name : BuildMavenConfigServer_ProduceDockerImage_BuildInfo
+    imageName : docker.artifactory-unified.soleng-us.jfrog.team/configserverdockerimage
+
+
+
